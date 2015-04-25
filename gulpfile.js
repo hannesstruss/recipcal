@@ -7,6 +7,7 @@ var gulp = require('gulp'),
     del = require('del'),
     watchify = require('watchify'),
     browserify = require('browserify'),
+    babelify = require('babelify'),
     source = require('vinyl-source-stream'),
     buffer = require('vinyl-buffer'),
     gutil = require('gulp-util'),
@@ -24,7 +25,9 @@ var b = watchify(browserify(assign(watchify.args, {
 })));
 
 function bundle_js() {
-  return b.bundle()
+  return b
+    .transform(babelify)
+    .bundle()
     .on('error', gutil.log.bind(gutil, 'Browserify Error'))
     .pipe(source('bundle.js'))
     .pipe(buffer())

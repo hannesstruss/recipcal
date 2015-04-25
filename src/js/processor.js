@@ -3,7 +3,8 @@ function IngredientProcessor() {
 }
 
 IngredientProcessor.prototype.process = function() {
-  console.log("Hallo");
+  var ns = [1, 2, 3];
+  console.log(ns.map(x => x * 2));
 };
 
 module.exports = IngredientProcessor;

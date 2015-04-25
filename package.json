@@ -15,7 +15,10 @@
     "watchify": "~3.1.2",
     "lodash": "~3.7.0",
     "gulp-sourcemaps": "~1.5.2",
-    "gulp-util": "~3.0.4"
+    "gulp-util": "~3.0.4",
+    "babel": "~5.1.11",
+    "gulp-babel": "~5.1.0",
+    "babelify": "~6.0.2"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
