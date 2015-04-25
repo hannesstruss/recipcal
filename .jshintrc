@@ -1,0 +1,11 @@
+{
+    "evil": true,
+    "regexdash": true,
+    "browser": true,
+    "wsh": true,
+    "trailing": true,
+    "sub": true,
+    "devel": true,
+    "node": true,
+    "esnext": true
+}
