@@ -7,5 +7,6 @@
     "sub": true,
     "devel": true,
     "node": true,
-    "esnext": true
+    "esnext": true,
+    "eqeqeq": true
 }

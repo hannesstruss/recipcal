@@ -1,10 +1,8 @@
-function IngredientProcessor() {
 
+class IngredientProcessor {
+  parse() {
+    return "Hallo?";
+  }
 }
-
-IngredientProcessor.prototype.process = function() {
-  var ns = [1, 2, 3];
-  console.log(ns.map(x => x * 2));
-};
 
 module.exports = IngredientProcessor;

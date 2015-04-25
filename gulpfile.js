@@ -12,7 +12,8 @@ var gulp = require('gulp'),
     buffer = require('vinyl-buffer'),
     gutil = require('gulp-util'),
     sourcemaps = require('gulp-sourcemaps'),
-    assign = require('lodash').assign;
+    assign = require('lodash').assign,
+    jasmine = require('gulp-jasmine');
 
 gulp.task('styles', function() {
   return sass('src/styles/main.sass', {style: 'expanded'})
@@ -45,4 +46,9 @@ gulp.task('watch', function() {
   gulp.start('js');
   gulp.watch('src/styles/**/*.sass', ['styles']);
   gulp.watch(['dist/**']).on('change', livereload.changed);
+});
+
+gulp.task('test', function() {
+  return gulp.src('spec/**/*.js')
+    .pipe(jasmine());
 });
