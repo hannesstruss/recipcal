@@ -1,0 +1,89 @@
+html {
+  font-family: "garamond-premier-pro", georgia, serif;
+  font-weight: normal;
+  -webkit-font-smoothing: antialiased;
+  font-size: 19px;
+  color: #222;
+  background: #FBFAF5;
+}
+
+header {
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+}
+
+h1 {
+  font-family: "brandon-grotesque", sans;
+  font-style: normal;
+  font-weight: 900;
+  font-size: 3.3rem;
+  text-align: center;
+  margin: 0;
+}
+
+h2 {
+  color: #E52D37;
+  font-size: 0.9rem;
+  text-align: center;
+  font-weight: 400;
+  margin-top: 0;
+  -webkit-font-smoothing: subpixel-antialiased;
+}
+
+.recipeInput {
+  font-family: "garamond-premier-pro", georgia, serif;
+  font-weight: normal;
+  color: #222;
+  display: block;
+  width: 100%;
+  height: 1rem;
+  font-size: 1rem;
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid #006EFF;
+  outline: none;
+  resize: none;
+  padding: 0.4rem 0;
+}
+
+textarea {
+  height: 1rem;
+  line-height: 1rem;
+}
+
+.content {
+  margin: auto;
+}
+
+@media screen and (max-width: 800px) {
+  .content {
+    width: 512px;
+  }
+}
+@media screen and (min-width: 800px) {
+  .content {
+    width: 700px;
+  }
+}
+.initialInput {
+  width: 400px;
+  margin: 3em auto 0;
+}
+
+.ingredients-list {
+  box-sizing: border-box;
+  list-style-type: none;
+  padding: 0 4em 0 0;
+  margin: 0;
+  float: left;
+  width: 75%;
+}
+.ingredients-list li {
+  margin-bottom: 0.6rem;
+}
+
+.recipeConverter-controls {
+  box-sizing: border-box;
+  width: 25%;
+  float: left;
+}
