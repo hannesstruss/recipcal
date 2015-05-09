@@ -1,3 +1,4 @@
 'use strict';
 
-var Processor = require('./processor.js');
+import Processor from './processor.js';
+import stupid from './view.jsx';
