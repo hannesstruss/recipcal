@@ -21,15 +21,17 @@ gulp.task('styles', function() {
     .pipe(gulp.dest('dist/assets/css'));
 });
 
-var b = watchify(browserify(assign(watchify.args, {
+var bundle = watchify(browserify(assign(watchify.args, {
   entries: ['./src/js/main.js'],
   debug: true
 })));
 
+bundle = bundle
+  .transform(babelify)
+  .transform(reactify);
+
 function bundle_js() {
-  return b
-    .transform(babelify)
-    .transform(reactify)
+  return bundle
     .bundle()
     .on('error', gutil.log.bind(gutil, 'Browserify Error'))
     .pipe(source('bundle.js'))
@@ -40,8 +42,8 @@ function bundle_js() {
 }
 
 gulp.task('js', bundle_js);
-b.on('update', bundle_js);
-b.on('log', gutil.log);
+bundle.on('update', bundle_js);
+bundle.on('log', gutil.log);
 
 gulp.task('watch', function() {
   livereload.listen();
