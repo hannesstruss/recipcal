@@ -104,4 +104,11 @@ describe('IngredientProcessor', function() {
     expect(result.unit).toBe(null);
     expect(result.name).toBe('small shallot, minced (about 1 tablespoon)');
   });
+
+  it('doesn\'t mistake large as liters', function() {
+    let result = processor.parse('1 large tomato')[0];
+    expect(result.amount).toBe(1);
+    expect(result.unit).toBe(null);
+    expect(result.name).toBe('large tomato');
+  });
 });

@@ -23,7 +23,7 @@ const literalRe = new RegExp("^(" + Object.keys(numbers).join("|") + ")\\s+\\w")
 const units = [
 	'cup', 'tbsp', 'tsp', 'l', 'liters', 'pinch', 'pinches', 'quart', 'tablespoon', 'teaspoon'
 ];
-const unitRe = new RegExp("^(" + units.map(u => u + "s?").join("|") + ")");
+const unitRe = new RegExp("^(" + units.map(u => u + "s?").join("|") + ")\\s+");
 
 const nameClutterRe = /^(of (an? )?)/;
 
