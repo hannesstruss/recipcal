@@ -1,4 +1,7 @@
 'use strict';
 
 import Processor from './processor.js';
-import stupid from './view.jsx';
+import Ingredient from './ingredient.js';
+import render from './view/view.jsx';
+
+render();
