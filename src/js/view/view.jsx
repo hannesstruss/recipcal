@@ -90,6 +90,6 @@ class RecipcalApp extends React.Component {
 module.exports = function() {
 	React.render(
 	  <RecipcalApp />,
-	  document.getElementById('content')
+	  document.querySelector('.content')
 	);
 };

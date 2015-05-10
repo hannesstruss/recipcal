@@ -1,12 +1,58 @@
-body
-  color: #333
-  font-family: "Helvetica Neue", Helvetica, Arial, sans
+$tomato: #E52D37
+
+@mixin font-body
+  font-family: "garamond-premier-pro", georgia, serif
+  font-weight: normal
+
+@mixin font-headline
+  font-family: "brandon-grotesque", sans
+  font-style: normal
+  font-weight: 900
+
+html
+  @include font-body
+  -webkit-font-smoothing: antialiased
+
+  font-size: 21px
+
+  color: #222
+  background: #FBFAF5
+
+header
+  margin-top: 3rem
+  margin-bottom: 3rem
+
+h1
+  @include font-headline
+  font-size: 3rem
+  text-align: center
+  margin: 0
+
+h2
+  color: $tomato
+  font-size: 0.8rem
+  text-align: center
+  font-weight: 400
+  margin-top: 0
+  -webkit-font-smoothing: subpixel-antialiased
 
 textarea
   width: 400px
   height: 200px
+  display: none
 
-  
+
+.content
+  width: 400px
+  margin: auto
+
+
 .ingredients-list
   list-style-type: none
-  padding: 0
+
+  li
+    font-size: 1.1rem
+
+    &:before
+      content: "– "
+
