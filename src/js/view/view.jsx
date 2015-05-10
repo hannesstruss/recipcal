@@ -1,5 +1,6 @@
 import React from 'react';
 import Processor from '../processor.js';
+import UnitSystem from '../UnitSystem.js';
 
 class RecipeInput extends React.Component {
   constructor(props) {
@@ -60,14 +61,86 @@ class IngredientList extends React.Component {
   }
 }
 
+class ConverterSettings extends React.Component {
+  onUnitSystemChanged(e) {
+    this.props.onUnitSystemChanged(e.target.value);
+  }
+
+  onMultiplierChanged(e) {
+    this.props.onMultiplierChanged(e.target.value);
+  }
+
+  render() {
+    return (
+      <div className="recipeConverter-controls">
+        <ul>
+          <li>
+            <input name="units"
+                   type="radio"
+                   value={UnitSystem.EUROPE}
+                   onChange={this.onUnitSystemChanged.bind(this)}
+                   checked={this.props.unitSystem === UnitSystem.EUROPE}>
+              <label>Europe</label>
+            </input>
+          </li>
+          <li>
+            <input name="units"
+                   type="radio"
+                   value={UnitSystem.US}
+                   onChange={this.onUnitSystemChanged.bind(this)}
+                   checked={this.props.unitSystem === UnitSystem.US}>
+              <label>U.S.</label>
+            </input>
+          </li>
+        </ul>
+
+        <input type="text"
+               value={this.props.multiplier}
+               onChange={this.onMultiplierChanged.bind(this)} />
+      </div>
+    );
+  }
+}
+
 class RecipeConverter extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      unitSystem: UnitSystem.EUROPE,
+      multiplier: 1
+    };
+  }
+
+  onUnitSystemChanged(unitSystem) {
+    this.setState({
+      unitSystem: unitSystem
+    });
+  }
+
+  onMultiplierChanged(multiplier) {
+    this.setState({
+      multiplier: multiplier
+    });
+  }
+
+  getTransformedIngredients() {
+    let multiplier = parseInt(this.state.multiplier);
+    if (isNaN(multiplier)) {
+      multiplier = 1;
+    }
+    return this.props.ingredients.map(ingredient => {
+      return ingredient.multiply(multiplier);
+    });
+  }
+
   render() {
     return (
       <div>
-        <IngredientList ingredients={this.props.ingredients} className="recipeConverter-ingredients" />
-        <div className="recipeConverter-controls">
-          Hallo
-        </div>
+        <IngredientList ingredients={this.getTransformedIngredients()} />
+        <ConverterSettings unitSystem={this.state.unitSystem}
+                           multiplier={this.state.multiplier}
+                           onUnitSystemChanged={this.onUnitSystemChanged.bind(this)}
+                           onMultiplierChanged={this.onMultiplierChanged.bind(this)} />
       </div>
     );
   }
