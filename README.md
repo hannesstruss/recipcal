@@ -3,11 +3,16 @@ Prepare
 
     npm install
 
-Run tests
----------
+Run tests (watch)
+-----------------
 
     npm install -g karma-cli
     karma start
+
+Run tests (once)
+----------------
+
+    npm test
 
 Run app
 -------
