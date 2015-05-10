@@ -1,3 +1,8 @@
+Prepare
+-------
+
+    npm install
+
 Run tests
 ---------
 
