@@ -1,4 +1,5 @@
 $tomato: #E52D37
+$text-color: #222
 
 @mixin font-body
   font-family: "garamond-premier-pro", georgia, serif
@@ -15,7 +16,7 @@ html
 
   font-size: 21px
 
-  color: #222
+  color: $text-color
   background: #FBFAF5
 
 header
@@ -36,11 +37,27 @@ h2
   margin-top: 0
   -webkit-font-smoothing: subpixel-antialiased
 
-textarea
-  width: 400px
-  height: 200px
-  display: none
+.recipeInput
+  @include font-body
+  color: $text-color
 
+  display: block
+  width: 100%
+  height: 1.1rem
+
+  font-size: 1.1rem
+
+  background: transparent
+  border: none
+  border-bottom: 2px solid #006EFF
+
+  outline: none
+  resize: none
+  padding: 0.5rem 0
+  
+textarea
+  height: 1.1rem
+  line-height: 1.1rem
 
 .content
   width: 400px
@@ -49,10 +66,8 @@ textarea
 
 .ingredients-list
   list-style-type: none
+  padding: 0
 
   li
     font-size: 1.1rem
-
-    &:before
-      content: "– "
-
+    margin: 0.8rem 0
