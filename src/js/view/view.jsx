@@ -31,7 +31,7 @@ class RecipeInput extends React.Component {
 
   render() {
     return <textarea 
-      className="recipeInput"
+      className="recipeInput initialInput"
       ref="textarea"
       placeholder="Paste an ingredient list..."
       onChange={this.onChange.bind(this)}
