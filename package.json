@@ -34,5 +34,10 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Hannes Struss"
+  "author": "Hannes Struss <x@hannesstruss.de> [http://hannesstruss.de]",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hannesstruss/recipcal"
+  },
+  "bugs": "https://github.com/hannesstruss/recipcal/issues"
 }
