@@ -1,7 +1,7 @@
 $tomato: #E52D37
 $text-color: #222
 
-$ingredient-size: 0.9rem
+$ingredient-size: 1rem
 
 @mixin font-body
   font-family: "garamond-premier-pro", georgia, serif
@@ -16,7 +16,7 @@ html
   @include font-body
   -webkit-font-smoothing: antialiased
 
-  font-size: 21px
+  font-size: 19px
 
   color: $text-color
   background: #FBFAF5
@@ -27,13 +27,13 @@ header
 
 h1
   @include font-headline
-  font-size: 3rem
+  font-size: 3.3rem
   text-align: center
   margin: 0
 
 h2
   color: $tomato
-  font-size: 0.8rem
+  font-size: 0.9rem
   text-align: center
   font-weight: 400
   margin-top: 0
@@ -62,14 +62,28 @@ textarea
   line-height: 1.0rem
 
 .content
-  width: 400px
   margin: auto
 
+@media screen and (max-width: 800px)
+  .content
+    width: 512px
+
+@media screen and (min-width: 800px)
+  .content
+    width: 700px
 
 .ingredients-list
+  box-sizing: border-box
   list-style-type: none
-  padding: 0
+  padding: 0 4em 0 0
+  margin: 0
+  float: left
+  width: 75%
 
   li
-    font-size: $ingredient-size
-    margin: 0.6rem 0
+    margin-bottom: 0.6rem
+
+.recipeConverter-controls
+  box-sizing: border-box
+  width: 25%
+  float: left

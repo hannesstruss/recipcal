@@ -60,6 +60,19 @@ class IngredientList extends React.Component {
   }
 }
 
+class RecipeConverter extends React.Component {
+  render() {
+    return (
+      <div>
+        <IngredientList ingredients={this.props.ingredients} className="recipeConverter-ingredients" />
+        <div className="recipeConverter-controls">
+          Hallo
+        </div>
+      </div>
+    );
+  }
+}
+
 class RecipcalApp extends React.Component {
   constructor(props) {
     super(props);
@@ -81,7 +94,7 @@ class RecipcalApp extends React.Component {
 
     return <div className="app">
       {input ? <RecipeInput onRecipeChanged={this.onRecipeChanged.bind(this)}/> : null}
-      {!input ? <IngredientList ingredients={this.state.ingredients} /> : null}
+      {!input ? <RecipeConverter ingredients={this.state.ingredients} /> : null}
     </div>;
   }
 }
