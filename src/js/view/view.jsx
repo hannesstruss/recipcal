@@ -107,7 +107,7 @@ class RecipeConverter extends React.Component {
     super(props);
     this.state = {
       unitSystem: UnitSystem.EUROPE,
-      multiplier: 1
+      multiplier: "1"
     };
   }
 
@@ -124,7 +124,7 @@ class RecipeConverter extends React.Component {
   }
 
   getTransformedIngredients() {
-    let multiplier = parseInt(this.state.multiplier);
+    let multiplier = parseFloat(this.state.multiplier.replace(",", "."), 10);
     if (isNaN(multiplier)) {
       multiplier = 1;
     }
