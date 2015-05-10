@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/hannesstruss/recipcal.svg?branch=master)](https://travis-ci.org/hannesstruss/recipcal)
+
 Prepare
 -------
 
