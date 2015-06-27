@@ -8,6 +8,10 @@ class Ingredient {
   multiply(multiplier) {
     return new Ingredient(this.amount * multiplier, this.unit, this.name);
   }
+
+  toString() {
+    return `[${this.amount} ${this.unit} of ${this.name}]`
+  }
 }
 
 module.exports = Ingredient;
