@@ -1,4 +1,5 @@
 import Ingredient from './ingredient.js';
+import allUnits from './units.js';
 
 const mixedFractionRe = /^(\d+)\s+(\d+)\/(\d+)\s+\w/;
 const fractionRe = /^(\d+)\/(\d+)\s+\w/;
@@ -20,9 +21,9 @@ const numbers = {
 };
 const literalRe = new RegExp("^(" + Object.keys(numbers).join("|") + ")\\s+\\w");
 
-const units = [
-	'cup', 'tbsp', 'tsp', 'l', 'liters', 'pinch', 'pinches', 'quart', 'tablespoon', 'teaspoon'
-];
+const units = allUnits
+  .map(u => [u.singular].concat([u.plural, u.others]))
+  .reduce((units, unit) => units.concat(unit));
 const unitRe = new RegExp("^(" + units.map(u => u + "s?").join("|") + ")\\s+");
 
 const nameClutterRe = /^(of (an? )?)/;
