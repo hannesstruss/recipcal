@@ -1,6 +1,9 @@
 import React from 'react';
 import Processor from '../processor.js';
+import Converter from '../converter.js';
 import UnitSystem from '../UnitSystem.js';
+
+const NO_UNIT_SYSTEM = "no-system";
 
 class RecipeInput extends React.Component {
   constructor(props) {
@@ -77,6 +80,15 @@ class ConverterSettings extends React.Component {
           <li>
             <input name="units"
                    type="radio"
+                   value={NO_UNIT_SYSTEM}
+                   onChange={this.onUnitSystemChanged.bind(this)}
+                   checked={this.props.unitSystem === NO_UNIT_SYSTEM}>
+              <label>Original</label>
+            </input>
+          </li>
+          <li>
+            <input name="units"
+                   type="radio"
                    value={UnitSystem.EUROPE}
                    onChange={this.onUnitSystemChanged.bind(this)}
                    checked={this.props.unitSystem === UnitSystem.EUROPE}>
@@ -105,8 +117,9 @@ class ConverterSettings extends React.Component {
 class RecipeConverter extends React.Component {
   constructor(props) {
     super(props);
+    this.converter = new Converter();
     this.state = {
-      unitSystem: UnitSystem.EUROPE,
+      unitSystem: NO_UNIT_SYSTEM,
       multiplier: "1"
     };
   }
@@ -129,7 +142,11 @@ class RecipeConverter extends React.Component {
       multiplier = 1;
     }
     return this.props.ingredients.map(ingredient => {
-      return ingredient.multiply(multiplier);
+      ingredient = ingredient.multiply(multiplier);
+      if (this.state.unitSystem != NO_UNIT_SYSTEM) {
+        return this.converter.convert(ingredient, this.state.unitSystem);
+      }
+      return ingredient;
     });
   }
 
