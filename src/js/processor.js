@@ -21,10 +21,10 @@ const numbers = {
 };
 const literalRe = new RegExp("^(" + Object.keys(numbers).join("|") + ")\\s+\\w");
 
-const units = allUnits
+const unitVariations = allUnits
   .map(u => [u.singular].concat([u.plural, u.others]))
-  .reduce((units, unit) => units.concat(unit));
-const unitRe = new RegExp("^(" + units.map(u => u + "s?").join("|") + ")\\s+");
+  .reduce((us, u) => us.concat(u));
+const unitRe = new RegExp("^(" + unitVariations.map(u => u + "s?").join("|") + ")\\s+");
 
 const nameClutterRe = /^(of (an? )?)/;
 
