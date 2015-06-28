@@ -12,6 +12,10 @@ class Ingredient {
   toString() {
     return `[${this.amount} ${this.unit} of ${this.name}]`
   }
+
+  clone() {
+    return new Ingredient(this.amount, this.unit, this.name);
+  }
 }
 
 module.exports = Ingredient;

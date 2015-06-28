@@ -14,7 +14,7 @@ describe('Converter', function() {
     converter = new Converter();
   })
 
-  it('should convert simple volumetric units', function() {
+  it('should convert simple volumetric units (tbsp -> ml)', function() {
     let ingredient = new Ingredient(1, units.bySingular('tbsp'), 'Olive oil');
     let converted = converter.convert(ingredient, UnitSystem.EUROPE);
 
@@ -22,7 +22,7 @@ describe('Converter', function() {
     expect(converted.amount).toBe(14.79);
   });
 
-  it('should convert simple weight units', function() {
+  it('should convert simple weight units (oz -> g)', function() {
     let ingredient = new Ingredient(2, units.bySingular('oz'), 'Flour');
     let converted = converter.convert(ingredient, UnitSystem.EUROPE);
 
