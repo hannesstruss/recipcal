@@ -4,6 +4,10 @@ class Unit {
     this.plural = plural;
     this.others = others;
   }
+
+  toString() {
+    return this.singular
+  }
 }
 
 module.exports = Unit;

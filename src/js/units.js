@@ -4,7 +4,7 @@ function u(singular, plural, ...others) {
   return new Unit(singular, plural, others);
 }
 
-module.exports = [
+const all = [
   u('cup', 'cups'),
   u('tbsp', 'tbsps', 'tablespoon', 'tablespoons'),
   u('tsp', 'tsps', 'teaspoon', 'teaspoons'),
@@ -17,3 +17,13 @@ module.exports = [
   u('g', 'g', 'gram', 'grams'),
   u('kg', 'kg', 'kilo', 'kilos', 'kilogram', 'kilograms')
 ];
+
+const bySingular = {};
+all.forEach(unit => {
+  bySingular[unit.singular] = unit;
+});
+
+module.exports = {
+  all: all,
+  bySingular: (singular) => bySingular[singular]
+};

@@ -1,5 +1,5 @@
 import Ingredient from './ingredient.js';
-import allUnits from './units.js';
+import units from './units.js';
 
 const mixedFractionRe = /^(\d+)\s+(\d+)\/(\d+)\s+\w/;
 const fractionRe = /^(\d+)\/(\d+)\s+\w/;
@@ -21,7 +21,7 @@ const numbers = {
 };
 const literalRe = new RegExp("^(" + Object.keys(numbers).join("|") + ")\\s+\\w");
 
-const unitVariations = allUnits
+const unitVariations = units.all
   .map(u => [u.singular].concat([u.plural, u.others]))
   .reduce((us, u) => us.concat(u));
 const unitRe = new RegExp("^(" + unitVariations.map(u => u + "s?").join("|") + ")\\s+");
