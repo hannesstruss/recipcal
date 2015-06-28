@@ -22,6 +22,20 @@ describe('Converter', function() {
     expect(converted.amount).toBe(14.79);
   });
 
+  it('should convert teaspoons to ml', function() {
+    let ingredient = new Ingredient(1, units.find('tsp'), 'Port wine');
+    let converted = converter.convert(ingredient, UnitSystem.EUROPE);
+    expect(converted.unit).toBe(units.find('ml'));
+    expect(converted.amount).toBe(4.93);
+  });
+
+  it('should convert ml to teaspoons', function() {
+    let ingredient = new Ingredient(5, units.find('ml'), 'Marsala');
+    let converted = converter.convert(ingredient, UnitSystem.US);
+    expect(converted.unit).toBe(units.find('tsp'));
+    expect(converted.amount).toBe(1);
+  });
+
   it('should convert simple weight units (oz -> g)', function() {
     let ingredient = new Ingredient(2, units.bySingular('oz'), 'Flour');
     let converted = converter.convert(ingredient, UnitSystem.EUROPE);
