@@ -1,14 +1,9 @@
 import Unit from './Unit';
+import Type from './UnitType'
 
 function u(type, singular, plural, ...others) {
   return new Unit(type, singular, plural, others);
 }
-
-const Type = {
-  VOLUMETRIC: 'volumetric',
-  MASS: 'mass',
-  INFORMAL: 'informal'
-};
 
 const all = [
   u(Type.VOLUMETRIC, 'cup', 'cups'),

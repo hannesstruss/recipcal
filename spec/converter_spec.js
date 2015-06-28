@@ -3,7 +3,9 @@
 import Converter from '../src/js/converter.js';
 import Ingredient from '../src/js/ingredient.js';
 import units from '../src/js/units.js';
+import Unit from '../src/js/Unit.js';
 import UnitSystem from '../src/js/UnitSystem.js';
+import UnitType from '../src/js/UnitType.js';
 
 describe('Converter', function() {
   let converter;
@@ -34,6 +36,15 @@ describe('Converter', function() {
 
     expect(converted.unit).toBeNull();
     expect(converted.amount).toBe(1);
+  });
+
+  it('should not convert informal units', function() {
+    let unit = new Unit(UnitType.INFORMAL, 'pinch', 'pinches');
+    let ingredient = new Ingredient(1, unit, 'Salt');
+
+    let converted = converter.convert(ingredient, UnitSystem.EUROPE);
+
+    expect(converted.unit).toBe(unit);
   });
 });
 
