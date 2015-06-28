@@ -9,6 +9,10 @@ class Unit {
   toString() {
     return this.singular
   }
+
+  get variants() {
+    return this.others.concat(this.singular, this.plural);
+  }
 }
 
 module.exports = Unit;

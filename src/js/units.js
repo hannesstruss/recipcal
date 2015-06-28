@@ -27,5 +27,6 @@ all.forEach(unit => {
 
 module.exports = {
   all: all,
-  bySingular: (singular) => bySingular[singular]
+  bySingular: (singular) => bySingular[singular],
+  find: (name) => all.filter(unit => unit.variants.indexOf(name) != -1)[0]
 };
