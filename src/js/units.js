@@ -1,21 +1,28 @@
 import Unit from './Unit';
 
-function u(singular, plural, ...others) {
-  return new Unit(singular, plural, others);
+function u(type, singular, plural, ...others) {
+  return new Unit(type, singular, plural, others);
 }
 
+const Type = {
+  VOLUMETRIC: 'volumetric',
+  MASS: 'mass',
+  INFORMAL: 'informal'
+};
+
 const all = [
-  u('cup', 'cups'),
-  u('tbsp', 'tbsps', 'tablespoon', 'tablespoons'),
-  u('tsp', 'tsps', 'teaspoon', 'teaspoons'),
-  u('pinch', 'pinches'),
-  u('quart', 'quarts'),
+  u(Type.VOLUMETRIC, 'cup', 'cups'),
+  u(Type.VOLUMETRIC, 'tbsp', 'tbsps', 'tablespoon', 'tablespoons'),
+  u(Type.VOLUMETRIC, 'tsp', 'tsps', 'teaspoon', 'teaspoons'),
+  u(Type.VOLUMETRIC, 'quart', 'quarts'),
 
-  u('ml', 'mls', 'milliliter', 'milliliters'),
-  u('l', 'l', 'liter', 'liters'),
+  u(Type.INFORMAL, 'pinch', 'pinches'),
 
-  u('g', 'g', 'gram', 'grams'),
-  u('kg', 'kg', 'kilo', 'kilos', 'kilogram', 'kilograms')
+  u(Type.VOLUMETRIC, 'ml', 'mls', 'milliliter', 'milliliters'),
+  u(Type.VOLUMETRIC, 'l', 'l', 'liter', 'liters'),
+
+  u(Type.MASS, 'g', 'g', 'gram', 'grams'),
+  u(Type.MASS, 'kg', 'kg', 'kilo', 'kilos', 'kilogram', 'kilograms')
 ];
 
 const bySingular = {};

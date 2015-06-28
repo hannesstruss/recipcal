@@ -1,5 +1,6 @@
 class Unit {
-  constructor(singular, plural, others = []) {
+  constructor(type, singular, plural, others = []) {
+    this.type = type;
     this.singular = singular;
     this.plural = plural;
     this.others = others;
