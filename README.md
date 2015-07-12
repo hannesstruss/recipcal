@@ -22,4 +22,4 @@ Run app
     npm install -g gulp-cli
     gulp watch
 
-Then serve the dist directory (e.g. `python -m SimpleHTTPServer`)
+Then serve the build directory (e.g. `python -m SimpleHTTPServer`)

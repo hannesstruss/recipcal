@@ -18,19 +18,24 @@ var gulp = require('gulp'),
 
 gulp.task('styles', function() {
   return sass('src/styles/main.sass', {style: 'expanded'})
-    .pipe(gulp.dest('dist/assets/css'));
+    .pipe(gulp.dest('build/assets/css'));
 });
 
-var bundle = watchify(browserify(assign(watchify.args, {
+gulp.task('static', function() {
+  gulp.src(['src/static/**/*']).pipe(gulp.dest('build'));
+});
+
+var bundle = browserify(assign(watchify.args, {
   entries: ['./src/js/main.js'],
   debug: true
-})));
+}));
 
-bundle = bundle
-  .transform(babelify)
-  .transform(reactify);
+var bundle = bundle
+    .transform(babelify)
+    .transform(reactify);
 
-function bundle_js() {
+
+function bundle_js(bundle) {
   return bundle
     .bundle()
     .on('error', gutil.log.bind(gutil, 'Browserify Error'))
@@ -38,19 +43,36 @@ function bundle_js() {
     .pipe(buffer())
     .pipe(sourcemaps.init({loadMaps: true}))
     .pipe(sourcemaps.write('./'))
-    .pipe(gulp.dest('./dist/assets/js'));
+    .pipe(gulp.dest('./build/assets/js'));
 }
 
-gulp.task('js', bundle_js);
-bundle.on('update', bundle_js);
+var watchified_bundle;
+function bundle_js_watchify() {
+  // If we call watchify(bundle) more than once (on each run), memory leaks. If we
+  // call it in global scope, all tasks never exit.
+  if (!watchified_bundle) {
+    watchified_bundle = watchify(bundle);
+  }
+  return bundle_js(watchified_bundle);
+}
+
+function bundle_js_once() {
+  return bundle_js(bundle);
+}
+
+gulp.task('watch_js', bundle_js_watchify);
+gulp.task('js', bundle_js_once);
+bundle.on('update', bundle_js_watchify);
 bundle.on('log', gutil.log);
 
-gulp.task('watch', function() {
+gulp.task('watch', ['build'], function() {
   livereload.listen();
-  gulp.start('js');
   gulp.watch('src/styles/**/*.sass', ['styles']);
-  gulp.watch(['dist/**']).on('change', livereload.changed);
+  gulp.watch('src/static/**/*', ['static']);
+  gulp.watch(['build/**']).on('change', livereload.changed);
 });
+
+gulp.task('build', ['static', 'js', 'styles']);
 
 gulp.task('test', function() {
   return gulp.src('spec/**/*.js')
