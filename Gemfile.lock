@@ -8,3 +8,6 @@ PLATFORMS
 
 DEPENDENCIES
   sass (>= 3.4)
+
+BUNDLED WITH
+   1.10.3
