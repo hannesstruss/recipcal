@@ -1,6 +1,6 @@
 {
   "name": "recipcal",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "calculate ingredients",
   "main": "gulpfile.js",
   "dependencies": {
