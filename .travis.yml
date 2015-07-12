@@ -2,7 +2,9 @@ language: node_js
 node_js:
 - '0.12'
 after_success:
-  - test $TRAVIS_PULL_REQUEST == "false" && test $TRAVIS_BRANCH == "master" && bash deploy.sh
+  - echo $TRAVIS_TAG
+  - echo $TRAVIS_BRANCH
+  - test $TRAVIS_TAG && test $TRAVIS_BRANCH == "master" && bash deploy.sh
 env:
   global:
     secure: Ht1+oeZnjREWUoE0AdvePNNk9rMmlx/xv09cInDglOXppNe4ZmQxw9MOcgKiBN0QRxTqhqfxV+aFv1R/Yae9ZTi0GchxQoPAimyBQXt07AuBzqjHJ72hZyw2XRu0wfnqqIaIqu2MjDXaNrL+l+VCjZgB9lTOcCTOmMMVPVtGkwNLmbp+msgsIsW8KcxUqPAB5cF8Ws9UcpY4UIY9GvFq2t1V4ZC1BmFDo6etgCj47hbXrGIJtE8L+xW8TZ3SZKIbKvkKuApAYIonHNBVfQTVLTq9NFGPfl6fDLwlbHV+xyEwy0FgbOiJqJulrxF5NZR7I9LWm2SOexoCWCX+gLHbQc+vYG7mtHLRkD0FAxOWrEhfQ9BWMInKps/ktEXWvA9bLBJekpBxgO4j8gpxq2L/ld4hyMShUpOpwlUaEvSLxkdEHxWBd4uTp8BP10yGEj/IOVSzB2GaxF4weq7COJsrwNSEAkuttIPIddhi0RgK7CZaXt01y8nM9w+MZqq/XCXufPHTi+YvgC8fTAVH5HyQxogPdEEhHjYEwHR28UVNmpbzU0BFyXSnwjFFeNn6rBM3NJQo/rXrRwqsFgiPA6cqu8tt9E0g9ONvUtJJgFFNb221qJLb2NoTC9B9/0tBq+e8GJfKivK7HQE/tw3TSYTgzySJWUB2R+Hr+7KTM6RhrF8=
