@@ -6,6 +6,7 @@ rev=$(git rev-parse --short HEAD)
 
 npm install
 npm install -g gulp-cli
+bundle install
 gulp build
 
 cd build
