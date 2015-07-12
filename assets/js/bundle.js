@@ -20020,7 +20020,7 @@ module.exports = IngredientProcessor;
 
 var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
 
-var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; desc = parent = getter = undefined; _again = false; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; continue _function; } } else if ('value' in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
+var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; desc = parent = getter = undefined; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; continue _function; } } else if ('value' in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
@@ -20041,6 +20041,8 @@ var _UnitSystemJs = require('../UnitSystem.js');
 var _UnitSystemJs2 = _interopRequireDefault(_UnitSystemJs);
 
 var RecipeInput = (function (_React$Component) {
+  _inherits(RecipeInput, _React$Component);
+
   function RecipeInput(props) {
     _classCallCheck(this, RecipeInput);
 
@@ -20057,8 +20059,6 @@ var RecipeInput = (function (_React$Component) {
       // 2 tablespoons slivered almonds`.replace(/^\s+/gm, "").trim()
     };
   }
-
-  _inherits(RecipeInput, _React$Component);
 
   _createClass(RecipeInput, [{
     key: 'componentDidMount',
@@ -20089,13 +20089,13 @@ var RecipeInput = (function (_React$Component) {
 })(_react2['default'].Component);
 
 var IngredientList = (function (_React$Component2) {
+  _inherits(IngredientList, _React$Component2);
+
   function IngredientList(props) {
     _classCallCheck(this, IngredientList);
 
     _get(Object.getPrototypeOf(IngredientList.prototype), 'constructor', this).call(this, props);
   }
-
-  _inherits(IngredientList, _React$Component2);
 
   _createClass(IngredientList, [{
     key: 'render',
@@ -20127,15 +20127,13 @@ var IngredientList = (function (_React$Component2) {
 })(_react2['default'].Component);
 
 var ConverterSettings = (function (_React$Component3) {
+  _inherits(ConverterSettings, _React$Component3);
+
   function ConverterSettings() {
     _classCallCheck(this, ConverterSettings);
 
-    if (_React$Component3 != null) {
-      _React$Component3.apply(this, arguments);
-    }
+    _get(Object.getPrototypeOf(ConverterSettings.prototype), 'constructor', this).apply(this, arguments);
   }
-
-  _inherits(ConverterSettings, _React$Component3);
 
   _createClass(ConverterSettings, [{
     key: 'onUnitSystemChanged',
@@ -20202,6 +20200,8 @@ var ConverterSettings = (function (_React$Component3) {
 })(_react2['default'].Component);
 
 var RecipeConverter = (function (_React$Component4) {
+  _inherits(RecipeConverter, _React$Component4);
+
   function RecipeConverter(props) {
     _classCallCheck(this, RecipeConverter);
 
@@ -20211,8 +20211,6 @@ var RecipeConverter = (function (_React$Component4) {
       multiplier: '1'
     };
   }
-
-  _inherits(RecipeConverter, _React$Component4);
 
   _createClass(RecipeConverter, [{
     key: 'onUnitSystemChanged',
@@ -20258,6 +20256,8 @@ var RecipeConverter = (function (_React$Component4) {
 })(_react2['default'].Component);
 
 var RecipcalApp = (function (_React$Component5) {
+  _inherits(RecipcalApp, _React$Component5);
+
   function RecipcalApp(props) {
     _classCallCheck(this, RecipcalApp);
 
@@ -20267,8 +20267,6 @@ var RecipcalApp = (function (_React$Component5) {
       ingredients: []
     };
   }
-
-  _inherits(RecipcalApp, _React$Component5);
 
   _createClass(RecipcalApp, [{
     key: 'onRecipeChanged',
